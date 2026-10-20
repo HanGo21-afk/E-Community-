@@ -1,0 +1,126 @@
+
+/* =========================
+   ADMIN DOCUMENT REQUESTS
+   Shared styles are in admin.css
+========================= */
+
+/* ACTIONS */
+.action-cell {
+    min-width: 150px;
+}
+
+.action-cell form {
+    margin: 8px 0 0;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* APPROVE BUTTON */
+.approve-btn {
+    background: #2E7D32;
+}
+
+.approve-btn:hover {
+    background: #1B5E20;
+}
+
+/* REJECT BUTTON */
+.reject-btn {
+    background: #C62828;
+}
+
+.reject-btn:hover {
+    background: #8E0000;
+}
+
+/* VIEW REQUEST DETAILS */
+.request-details {
+    margin-bottom: 8px;
+}
+
+.request-details summary {
+    color: #1B5E20;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 7px 0;
+}
+
+.details-content {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 12px;
+    background: #F1F8E9;
+    border-radius: 8px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.details-content p {
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.details-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ALREADY PROCESSED */
+.processed-label {
+    display: inline-block;
+    margin-top: 8px;
+    color: #555;
+    font-size: 12px;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.status.pending {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #FFF3CD;
+    color: #856404;
+    font-weight: bold;
+}
+
+.status.approved {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #D4EDDA;
+    color: #155724;
+    font-weight: bold;
+}
+
+.status.rejected {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #F8D7DA;
+    color: #721C24;
+    font-weight: bold;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px) {
+    .requests-container {
+        overflow-x: auto;
+    }
+
+    .requests-table {
+        min-width: 850px;
+    }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>Barangay Tacdangan: Register</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+
+            <div class="navbar-container">
+
+                <header>
+
+                    <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Logo" class="logo-img">
+
+                    <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+
+                </header>
+
+                <ul class="nav-menu">
+
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+
+                    <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div class="wrapper">
+
+            <div class="register-container">
+
+                <div class="register-header">
+
+                    <h1>Register</h1>
+
+                    <p>Register to be part of the barangay</p>
+
+                </div>
+
+                <form class="register-form" method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="frst-name">First Name <span class="required">*</span></label>
+
+                            <input type="text" id="frst-name" name="frst-name" placeholder="First Name" required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="lst-name">Last Name <span class="required">*</span></label>
+
+                            <input type="text" id="lst-name" name="lst-name" placeholder="Last Name" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="mid-name">Middle Name</label>
+
+                            <input type="text" id="mid-name" name="mid-name" placeholder="Middle Name">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="suffix">Suffix (if applicable)</label>
+
+                            <input type="text" id="sfx" name="sfx" placeholder="Suffix">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="resident-address">Address <span class="required">*</span></label>
+
+                        <input type="text" id="address" name="address" placeholder="House No., Street, Purok/Zone" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contact-info">Email Address / Contact Number <span class="required">*</span></label>
+
+                        <input type="text" id="contact-info" name="email" placeholder="Enter email address or contact number" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="valid-id">Upload Valid ID (JPG/PNG) <span class="required">*</span></label>
+
+                        <input type="file" id="valid-id" name="valid-id" accept=".jpg,.jpeg,.png" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="proof-residency">Proof of Residency (Utility bills or lease agreement) (JPG/PNG) <span class="required">*</span></label>
+
+                        <input type="file" id="proof-residency" name="proof-residency" accept=".jpg,.jpeg,.png" required>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="password">Password <span class="required">*</span></label>
+
+                            <div class="password-wrapper">
+
+                                <input type="password" id="myInput" name="password" placeholder="Password" required>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="confirm-password">Confirm Password <span class="required">*</span></label>
+
+                            <div class="password-wrapper">
+
+                                <input type="password" id="myinput" name="confirm-password" placeholder="Confirm Password" required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="password-options">
+
+                        <div class="show-pass">
+
+                            <input type="checkbox" onclick="myFunction()">
+
+                            <span>Show Password</span>
+
+                        </div>
+
+                    </div>
+
+                    <script>
+
+                        function myFunction() {
+
+                            var x = document.getElementById("myInput");
+
+                            if (x.type === "password") {
+
+                                x.type = "text";
+
+                            } else {
+
+                                x.type = "password";
+
+                            }
+
+                        }
+
+                    </script>
+
+                    <div class="password-options2">
+
+                        <div class="show-pass2">
+
+                            <input type="checkbox" onclick="MyFunction()">
+
+                            <span>Show Password</span>
+
+                        </div>
+
+                    </div>
+
+                    <script>
+
+                        function MyFunction() {
+
+                            var x = document.getElementById("myinput");
+
+                            if (x.type === "password") {
+
+                                x.type = "text";
+
+                            } else {
+
+                                x.type = "password";
+
+                            }
+
+                        }
+
+                    </script>
+
+                    <div class="form-actions">
+
+                        <button type="submit" class="btn-register">Register</button>
+
+                        <button type="reset" class="btn-reset">Clear</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
+

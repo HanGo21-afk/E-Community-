@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Message Sent | E-Community</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/contact_complete.css') }}">
+</head>
+
+<body>
+
+    <!-- WEBSITE HEADER -->
+    <header class="site-header">
+        <img src="{{ url_for('static', filename='images/jb.png') }}"
+            alt="E-Community Logo"
+            class="logo">
+
+        <div class="brand-text">
+            <h2>E-Community</h2>
+            <p>Barangay Tacdangan</p>
+        </div>
+    </header>
+
+    <!-- SUCCESS MESSAGE -->
+    <main class="page-content">
+
+        <section class="success-card">
+
+            <div class="success-icon" aria-hidden="true">✓</div>
+
+            <span class="success-label">SUBMISSION SUCCESSFUL</span>
+
+            <h1>Message Sent Successfully!</h1>
+
+            <p class="description">
+                Thank you for reaching out to Barangay Tacdangan.
+                Your message has been submitted successfully.
+                We appreciate you taking the time to contact us.
+            </p>
+
+            <div class="info-note">
+                <strong>What's next?</strong><br>
+                Your message is available to the Barangay staff
+                through the E-Community administration system.
+                Please check with the Barangay Office for any updates.
+            </div>
+
+            <div class="button-group">
+
+                <a href="{{ url_for('contact') }}" class="button">
+                    Back to Contact
+                </a>
+
+                <a href="{{ url_for('home') }}"
+                   class="button secondary-button">
+                    Back to Home
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- WEBSITE FOOTER -->
+    <footer class="site-footer">
+        &copy; 2026 E-Community | Barangay Tacdangan
+        <br>
+        Serving the community through accessible digital services.
+    </footer>
+
+</body>
+</html>

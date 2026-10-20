@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay Tacdangan: Services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/service.css') }}">
+	    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav class="nav-side">
+                <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Picture" class="logo">
+                <hr>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('service') }}" class="active">Services</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                {% if session.get('user_id') %}
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('signin') }}">Register/ Sign In</a></li>
+                {% endif %}
+                </ul>
+                <h3>Office hours:</h3>
+                <p>Weekdays: 8am-4pm</p><br>
+                <p>Weekends: 8am-12pm</p>
+            </nav>
+
+            <div class="main">
+                <header>
+                    <h1> BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1><!--child of header-->
+                    <hr>
+                </header>
+
+                <div class="services-container">
+                    <div class="services-header">
+                        <h2 >OUR SERVICES</h2>
+                        <p>Access barangay services quickly and easily. Click on any service below to get started.</p>
+                    </div>
+
+                    <div class="services-grid">
+
+                        <a href="{{ url_for('req_doc') }}" class="service-btn">
+                            <div class="btn-icon">📄</div>
+                            <h3>Request Documents</h3>
+                        </a>
+
+                        <a href="{{ url_for('complaint') }}" class="service-btn">
+                            <div class="btn-icon">📢</div>
+                            <h3>File Complaint</h3>
+                        </a>
+
+                        <a href="{{ url_for('health') }}" class="service-btn">
+                            <div class="btn-icon">🏥</div>
+                            <h3>Health Services</h3>
+                        </a>
+
+                        <a href="{{ url_for('assistance') }}" class="service-btn">
+                            <div class="btn-icon">🤝</div>
+                            <h3>Apply Assistance</h3>
+                        </a>
+
+                        <a href="{{ url_for('track') }}" class="service-btn">
+                            <div class="btn-icon">🔍</div>
+                            <h3>Track Requests</h3>
+                        </a>
+
+                    </div>
+
+                    <footer>
+                        <p>&copy; Copyright 2026 ITE 298</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        
+    </body>     
+</html>

@@ -1,0 +1,164 @@
+
+/* =========================
+   ADMIN ASSISTANCE REQUESTS
+   Shared styles are in admin.css
+========================= */
+
+/* REQUESTS CONTAINER */
+.requests-container {
+    width: 100%;
+    margin-top: 24px;
+    overflow-x: auto;
+}
+
+/* REQUESTS TABLE */
+.requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.requests-table th,
+.requests-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+.requests-table th {
+    background: #1B5E20;
+    color: white;
+}
+
+.requests-table tbody tr:nth-child(even) {
+    background: #F5F8F5;
+}
+
+/* VIEW DETAILS */
+.request-details {
+    margin-bottom: 8px;
+}
+
+.request-details summary {
+    color: #1B5E20;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 7px 0;
+}
+
+.details-content {
+    min-width: 220px;
+    max-width: 340px;
+    padding: 12px;
+    background: #F1F8E9;
+    border-radius: 8px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.details-content p {
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.details-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.status.pending {
+    background: #FFF3CD;
+    color: #856404;
+}
+
+.status.approved {
+    background: #D4EDDA;
+    color: #155724;
+}
+
+.status.rejected {
+    background: #F8D7DA;
+    color: #721C24;
+}
+
+/* =========================
+   APPROVE / REJECT ACTIONS
+========================= */
+.action-cell {
+    min-width: 135px;
+}
+
+.action-cell form {
+    margin: 8px 0;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.approve-btn {
+    background: #2E7D32;
+}
+
+.approve-btn:hover {
+    background: #1B5E20;
+}
+
+.reject-btn {
+    background: #C62828;
+}
+
+.reject-btn:hover {
+    background: #8E0000;
+}
+
+.processed-label {
+    display: inline-block;
+    color: #555;
+    font-size: 12px;
+}
+
+/* EMPTY TABLE MESSAGE */
+.empty-message {
+    padding: 20px;
+    text-align: center;
+    color: #555;
+}
+
+/* BACK TO DASHBOARD */
+.back-link {
+    display: inline-block;
+    margin-top: 24px;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px) {
+    .requests-container {
+        overflow-x: auto;
+    }
+
+    .requests-table {
+        min-width: 1100px;
+    }
+}

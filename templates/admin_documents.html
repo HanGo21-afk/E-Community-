@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document Requests | E-Community Admin</title>
+
+    <!-- Shared admin styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <!-- Document Requests page styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_documents.css') }}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="nav-side">
+
+        <div class="logo-area">
+            <div class="admin-logo">E</div>
+            <p>E-Community</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin') }}">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_documents') }}" class="active">
+                    Documents
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_health') }}">
+                    Health
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_assistance') }}">
+                    Assistance
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_complaints') }}">
+                    Complaints
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_messages') }}">
+                    Messages
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_residents') }}">
+                    Residents
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header>
+            <p class="admin-label">E-COMMUNITY ADMINISTRATION</p>
+
+            <h1>Document Requests</h1>
+
+            <div class="welcome-box">
+                <p>Manage Document Requests</p>
+
+                <span>
+                    View and manage document requests submitted by residents.
+                </span>
+            </div>
+        </header>
+
+        <!-- REQUEST TABLE -->
+        <section class="requests-container">
+
+            <h2>Request Records</h2>
+
+            <table class="requests-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Resident</th>
+                        <th>Document Type</th>
+                        <th>Purpose</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in requests %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+
+                        <td>
+                            {{ item.first_name or 'Unknown' }}
+                            {{ item.last_name or '' }}
+                        </td>
+
+                        <td>{{ item.document_type }}</td>
+
+                        <td>{{ item.purpose }}</td>
+
+                        <td>{{ item.request_date }}</td>
+
+                        <td>
+                            {% set current_status = item.status or 'Pending' %}
+
+                            <span class="status {{ current_status | lower }}">
+                                {{ current_status }}
+                            </span>
+                        </td>
+
+                        <!-- ACTIONS -->
+                        <td class="action-cell">
+
+                            <!-- VIEW DETAILS -->
+                            <details class="request-details">
+
+                                <summary>View Details</summary>
+
+                                <div class="details-content">
+                                    <p>
+                                        <strong>Request ID:</strong>
+                                        {{ item.id }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Resident:</strong>
+                                        {{ item.first_name or 'Unknown' }}
+                                        {{ item.last_name or '' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Document Type:</strong>
+                                        {{ item.document_type }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Purpose:</strong>
+                                        {{ item.purpose }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Date Submitted:</strong>
+                                        {{ item.request_date }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Status:</strong>
+                                        {{ current_status }}
+                                    </p>
+                                </div>
+
+                            </details>
+
+                            <!-- APPROVE / REJECT -->
+                            {% if current_status | lower == 'pending' %}
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('update_document_status', request_id=item.id, action='approve') }}"
+                                onsubmit="return confirm('Are you sure you want to approve this request?');">
+
+                                <button type="submit"
+                                        class="action-btn approve-btn">
+                                    Approve
+                                </button>
+                            </form>
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('update_document_status', request_id=item.id, action='reject') }}"
+                                onsubmit="return confirm('Are you sure you want to reject this request?');">
+
+                                <button type="submit"
+                                        class="action-btn reject-btn">
+                                    Reject
+                                </button>
+                            </form>
+
+                            {% else %}
+
+                            <span class="processed-label">
+                                Already processed
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="empty-message">
+                            No document requests found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <a href="{{ url_for('admin') }}" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>

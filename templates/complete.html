@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay Tacdangan: Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/complete.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
+    </head>
+    <body>
+        <div class="wrapper">     
+            <nav class="nav-side">   
+                <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Picture" class="logo">
+                <hr>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                    <li><a href="{{ url_for('signin') }}">Register/ Sign In</a></li>
+                <h3>Office hours:</h3>
+                <p>Weekdays: 8am-4pm</p><br>
+                <p>Weekends: 8am-12pm</p>
+            </nav>
+
+            <div class="main">
+                <header>
+                    <h1> BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                    <hr>
+                </header>
+                
+
+                <div class="submit">
+                    <div class="submit-box">
+                        <div class="success-icon">✓</div>
+                        <h2>Submit Complete</h2>
+                        <p>Your request has been successfully submitted.</p>
+                        <div class="button-group">
+                            <a href="{{ url_for('service') }}" class="btn-secondary">Back to Services</a>
+                            <a href="{{ url_for('track') }}" class="btn-primary">Track Request</a>
+                        </div>
+                    </div>
+                </div>
+
+                <footer>
+                <p>&copy; Copyright 2026 ITE 298</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Tacdangan: Health  Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/health.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-side">
+            <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Barangay Logo" class="logo">
+            <hr>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('service') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign Out</a></li>
+            </ul>
+            <h3>Office hours:</h3>
+            <p>Weekdays: 8am-4pm</p>
+            <p>Weekends: 8am-12pm</p>
+        </nav>
+
+        <div class="main">
+            <header>
+                <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                <hr>
+            </header>
+
+            <div class="form-container">
+                <h2 class="form-title">Health Services Request</h2>
+                <form method="POST" action="{{ url_for('health') }}">
+                    <div class="form-section">
+                        <h3 class="section-heading">Resident Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resident-name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="resident-name" name="resident-name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resident-age">Age <span class="required">*</span></label>
+                                <input type="number" id="resident-age" name="resident-age" placeholder="Enter your age" min="0" max="150" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resident-gender">Gender <span class="required">*</span></label>
+                                <select id="resident-gender" name="resident-gender" required>
+                                    <option value="">-- Select gender --</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="resident-contact">Contact Number <span class="required">*</span></label>
+                                <input type="text" id="resident-contact" name="resident-contact" placeholder="Enter your contact number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="resident-address">Complete Address <span class="required">*</span></label>
+                                <input type="text" id="resident-address" name="resident-address" placeholder="House No., Street, Purok/Zone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Service Needed</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="service-type">Type of Service <span class="required">*</span></label>
+                                <select id="service-type" name="service-type" required>
+                                    <option value="">-- Select service --</option>
+                                    <option value="general-checkup">General Checkup</option>
+                                    <option value="vaccination">Vaccination</option>
+                                    <option value="medical-consultation">Medical Consultation</option>
+                                    <option value="maternal-child">Maternal Care / Child Health</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="preferred-date">Preferred Date of Visit <span class="required">*</span></label>
+                                <input type="date" id="preferred-date" name="preferred-date" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Basic Health Concern(Optional)</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="health-reason">Reason for Request / Symptoms</label>
+                                <textarea id="health-reason" name="health-reason" placeholder="Describe your symptoms or reason for visit"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="symptom-onset">When did it start?</label>
+                                <input type="text" id="symptom-onset" name="symptom-onset" placeholder="e.g., today, 3 days ago">
+                            </div>
+                            <div class="form-group">
+                                <label for="severity">Severity</label>
+                                <select id="severity" name="severity">
+                                    <option value="">-- Select severity --</option>
+                                    <option value="mild">Mild</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="severe">Severe</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Health Background</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="allergies">Any known allergies? <span class="required">*</span></label>
+                                <select id="allergies" name="allergies" required>
+                                    <option>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row full" id="allergy-detail-row" style="display: none;">
+                            <div class="form-group">
+                                <label for="allergy-specify">Please specify:</label>
+                                <input type="text" id="allergy-specify" name="allergy-specify" placeholder="List your allergies">
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="medication">Currently taking medication? <span class="required">*</span></label>
+                                <select id="medication" name="medication" required>
+                                    <option>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row full" id="medication-detail-row" style="display: none;">
+                            <div class="form-group">
+                                <label for="medication-specify">Please specify:</label>
+                                <input type="text" id="medication-specify" name="medication-specify" placeholder="List your medications">
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="existing-illness">Existing illness? (Optional)</label>
+                                <input type="text" id="existing-illness" name="existing-illness" placeholder="List any existing medical conditions">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Special Category (if applicable)</h3>
+                        
+                        <div class="checkbox-group-container">
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="senior-citizen">
+                                        <input type="checkbox" id="senior-citizen" name="senior-citizen">
+                                        <span>Senior Citizen (60 years old and above)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="pwd">
+                                        <input type="checkbox" id="pwd" name="pwd">
+                                        <span>Person with Disability (PWD)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="pregnant">
+                                        <input type="checkbox" id="pregnant" name="pregnant">
+                                        <span>Pregnant</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="child">
+                                        <input type="checkbox" id="child" name="child">
+                                        <span>Child (0–5 years old)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Declaration</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group checkbox-group">
+                                <label for="declaration">
+                                    <input type="checkbox" id="declaration" name="declaration" required>
+                                    <span>I confirm that the information provided is true and correct.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                    <a href="{{ url_for('service') }}" class="btn">Back to Services</a>
+                </form>
+            </div>
+
+            <footer>
+                <p>&copy; Copyright 2026 ITE 298</p>
+            </footer>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

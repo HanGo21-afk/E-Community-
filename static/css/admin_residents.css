@@ -1,0 +1,55 @@
+
+/* =========================
+   ADMIN RESIDENTS
+   Shared layout is in admin.css
+========================= */
+
+/* RESIDENT INFORMATION */
+.resident-name {
+    min-width: 180px;
+    font-weight: bold;
+    color: #1B5E20;
+}
+
+.resident-address {
+    min-width: 200px;
+    max-width: 300px;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.resident-email {
+    overflow-wrap: anywhere;
+}
+
+.resident-email a {
+    color: #1B5E20;
+    text-decoration: underline;
+}
+
+.resident-email a:hover {
+    color: #2E7D32;
+}
+
+/* ROLE BADGE */
+.resident-role {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #E8F5E9;
+    color: #1B5E20;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* TABLE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .requests-container {
+        overflow-x: auto;
+    }
+
+    .requests-table {
+        min-width: 900px;
+    }
+}

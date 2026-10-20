@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Tacdangan: Apply Assistance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assistance.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-side">
+            <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Barangay Logo" class="logo">
+            <hr>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('service') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign Out</a></li>
+            </ul>
+            <h3>Office hours:</h3>
+            <p>Weekdays: 8am-4pm</p>
+            <p>Weekends: 8am-12pm</p>
+        </nav>
+
+        <div class="main">
+            <header>
+                <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                <hr>
+            </header>
+
+            <div class="form-container">
+                <h2 class="form-title">Apply for Assistance</h2>
+                <form method="POST" action="{{ url_for('assistance') }}">
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Resident Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applicant-name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="applicant-name" name="applicant-name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="applicant-age">Age <span class="required">*</span></label>
+                                <input type="number" id="applicant-age" name="applicant-age" placeholder="Enter your age" min="0" max="150" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applicant-gender">Gender <span class="required">*</span></label>
+                                <select id="applicant-gender" name="applicant-gender" required>
+                                    <option value="">-- Select gender --</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="applicant-contact">Contact Number <span class="required">*</span></label>
+                                <input type="text" id="applicant-contact" name="applicant-contact" placeholder="Enter your contact number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="applicant-address">Address <span class="required">*</span></label>
+                                <input type="text" id="applicant-address" name="applicant-address" placeholder="House No., Street, Purok/Zone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Type of Assistance Needed</h3>
+                        
+                        <p class="section-info">Select one or more assistance type(s) that you need:</p>
+                        
+                        <div class="checkbox-group-container">
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="financial-assistance">
+                                        <input type="checkbox" id="financial-assistance" name="assistance-type" value="financial-assistance">
+                                        <span>Financial Assistance</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="medical-assistance">
+                                        <input type="checkbox" id="medical-assistance" name="assistance-type" value="medical-assistance">
+                                        <span>Medical Assistance</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="burial-assistance">
+                                        <input type="checkbox" id="burial-assistance" name="assistance-type" value="burial-assistance">
+                                        <span>Burial Assistance</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="educational-assistance">
+                                        <input type="checkbox" id="educational-assistance" name="assistance-type" value="educational-assistance">
+                                        <span>Educational Assistance</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="food-assistance">
+                                        <input type="checkbox" id="food-assistance" name="assistance-type" value="food-assistance">
+                                        <span>Food Assistance</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Details of Request</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="request-reason">Reason for Request <span class="required">*</span></label>
+                                <textarea id="request-reason" name="request-reason" placeholder="e.g., hospitalization, no source of income, emergency need" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="amount-requested">Amount Requested (optional)</label>
+                                <input type="text" id="amount-requested" name="amount-requested" placeholder="e.g., ₱5,000">
+                            </div>
+                            <div class="form-group">
+                                <label for="date-needed">Date Needed / Urgency <span class="required">*</span></label>
+                                <input type="date" id="date-needed" name="date-needed" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Household Information (Simple)</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="household-members">Number of Household Members <span class="required">*</span></label>
+                                <input type="number" id="household-members" name="household-members" placeholder="Enter number of family members" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="income-source">Source of Income (if any)</label>
+                                <input type="text" id="income-source" name="income-source" placeholder="e.g., farming, daily wage, small business">
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="monthly-income">Estimated Monthly Income (optional)</label>
+                                <select id="monthly-income" name="monthly-income">
+                                    <option value="">-- Select income range --</option>
+                                    <option value="no-income">No income</option>
+                                    <option value="below-5000">Below ₱5,000</option>
+                                    <option value="5000-10000">₱5,000 - ₱10,000</option>
+                                    <option value="10000-15000">₱10,000 - ₱15,000</option>
+                                    <option value="15000-20000">₱15,000 - ₱20,000</option>
+                                    <option value="above-20000">Above ₱20,000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Supporting Information</h3>
+                        
+                        <div class="info-box">
+                            <p><strong>Optional:</strong> You may upload supporting documents (e.g., medical certificate, school ID, medical bills, etc.) through this form.</p>
+                            <p><strong>Alternative:</strong> You may submit required documents directly at the Barangay Office during office hours.</p>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="supporting-document">Upload Supporting Document (optional)</label>
+                                <input type="file" id="supporting-document" name="supporting-document" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-heading">Declaration</h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group checkbox-group">
+                                <label for="declaration">
+                                    <input type="checkbox" id="declaration" name="declaration" required>
+                                    <span>I certify that the information provided is true and correct.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <a href="{{ url_for('service') }}" class="btn">Back to Services</a>
+                </form>
+            </div>
+
+            <footer>
+                <p>&copy; Copyright 2026 ITE 298</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

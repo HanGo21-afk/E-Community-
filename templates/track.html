@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Tacdangan: Track Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/track.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-side">
+            <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Barangay Logo" class="logo">
+            <hr>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('service') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+            </ul>
+            <h3>Office hours:</h3>
+            <p>Weekdays: 8am-4pm</p>
+            <p>Weekends: 8am-12pm</p>
+        </nav>
+
+        <div class="main">
+            <header>
+                <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                <hr>
+            </header>
+
+            <div class="track-container">
+                <h2 class="track-title">Track Your Request</h2>
+
+                {% if requests %}
+                    {% for req in requests %}
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="request-info">
+                                <h3>{{ req.document_type | replace('-', ' ') | title }}</h3>
+                                <p class="reference-number">
+                                    <strong>Reference ID:</strong>
+                                    REQ-{{ "%05d" | format(req.id) }}
+                                </p>
+                                <p class="request-date">
+                                    <strong>Submitted:</strong>
+                                    {{ req.request_date.strftime('%B %d, %Y at %I:%M %p') if req.request_date else 'Date unavailable' }}
+                                </p>
+                            </div>
+
+                            <div class="request-status">
+                                <span class="status-badge {{ req.status | lower }}">
+                                    {{ req.status }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>Request Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Document Type</label>
+                                    <p>{{ req.document_type | replace('-', ' ') | title }}</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Purpose</label>
+                                    <p>{{ req.purpose | replace('-', ' ') | title }}</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Request ID</label>
+                                    <p>{{ req.id }}</p>
+                                </div>
+                                <div class="info-item">
+                                    <label>Current Status</label>
+                                    <p>{{ req.status }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-container">
+                            <h3 class="timeline-title">Request Status Timeline</h3>
+                            <div class="timeline">
+
+                                <div class="timeline-step completed">
+                                    <div class="timeline-marker">
+                                        <span class="checkmark">✓</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>Request Submitted</h4>
+                                        <p class="timeline-date">
+                                            {{ req.request_date.strftime('%B %d, %Y at %I:%M %p') if req.request_date else 'Date unavailable' }}
+                                        </p>
+                                        <p class="timeline-description">
+                                            Your document request has been submitted to the Barangay Office.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {% if req.status == 'Pending' %}
+                                <div class="timeline-step active">
+                                    <div class="timeline-marker">
+                                        <span class="number">2</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>Awaiting Review</h4>
+                                        <p class="timeline-date">Pending</p>
+                                        <p class="timeline-description">
+                                            Your request is waiting for the Barangay staff to review it.
+                                        </p>
+                                    </div>
+                                </div>
+                                {% elif req.status == 'Approved' %}
+                                <div class="timeline-step completed">
+                                    <div class="timeline-marker">
+                                        <span class="checkmark">✓</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>Request Approved</h4>
+                                        <p class="timeline-date">Approved</p>
+                                        <p class="timeline-description">
+                                            Your request has been approved by the Barangay staff.
+                                            Please contact the office to confirm document collection.
+                                        </p>
+                                    </div>
+                                </div>
+                                {% elif req.status == 'Rejected' %}
+                                <div class="timeline-step">
+                                    <div class="timeline-marker">
+                                        <span class="number">2</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h4>Request Rejected</h4>
+                                        <p class="timeline-date">Rejected</p>
+                                        <p class="timeline-description">
+                                            Your request was rejected. Please contact the Barangay Office
+                                            for more information.
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <div class="status-details-card">
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label>Document Type</label>
+                                    <p>{{ req.document_type | replace('-', ' ') | title }}</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Request ID</label>
+                                    <p>{{ req.id }}</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Submitted Date</label>
+                                    <p>
+                                        {{ req.request_date.strftime('%B %d, %Y') if req.request_date else 'Unavailable' }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label>Current Status</label>
+                                    <p>
+                                        <span class="status-badge {{ req.status | lower }}">
+                                            {{ req.status }}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Pickup Location</label>
+                                    <p>Barangay Office</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Processing Information</label>
+                                    <p>
+                                        {% if req.status == 'Pending' %}
+                                            Awaiting review
+                                        {% elif req.status == 'Approved' %}
+                                            Request approved
+                                        {% elif req.status == 'Rejected' %}
+                                            Contact the office
+                                        {% else %}
+                                            {{ req.status }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                {% else %}
+                    <div class="request-card">
+                        <h3>No Document Requests Yet</h3>
+                        <p>You haven't submitted any document requests yet.</p>
+                        <p>Submit a document request to see its status here.</p>
+                        <div class="action-buttons">
+                            <a href="{{ url_for('req_doc') }}" class="btn btn-primary">
+                                Submit a Document Request
+                            </a>
+                            <a href="{{ url_for('service') }}" class="btn btn-primary">
+                                Back to Services
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="notes-card">
+                    <h4>Important Notes</h4>
+                    <ul>
+                        <li>Check this page regularly for updates to your request status.</li>
+                        <li>Bring a valid ID when collecting your document.</li>
+                        <li>Contact the Barangay Office if your request is rejected or you need assistance.</li>
+                        <li>Approval does not necessarily mean the document is already ready for pickup. Confirm with the office.</li>
+                    </ul>
+                </div>
+
+                <div class="contact-card">
+                    <h4>Need Help?</h4>
+                    <div class="contact-info">
+                        <p><strong>Barangay Tacdangan Office</strong></p>
+                        <p>📍 Tacdangan</p>
+                        <p>📞 Please contact your Barangay Office for its current phone number.</p>
+                        <p>⏰ Office Hours: Mon-Fri 8:00 AM - 4:00 PM | Sat-Sun 8:00 AM - 12:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="{{ url_for('req_doc') }}" class="btn btn-primary">
+                        Submit New Request
+                    </a>
+                    <a href="{{ url_for('service') }}" class="btn btn-primary">
+                        Back to Services
+                    </a>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy; Copyright 2026 ITE 399</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

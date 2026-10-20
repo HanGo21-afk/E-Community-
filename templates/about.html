@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay Tacdangan: About Us</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+	    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav class="nav-side">
+                <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Picture" class="logo">      
+                <hr>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="active">About Us</a></li>
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>  
+                {% if session.get('user_id') %}
+                   <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                   <li><a href="{{ url_for('signin') }}">Register/ Sign In</a></li>
+                {% endif %}
+                </ul>
+                <h3>Office hours:</h3>
+                <p>Weekdays: 8am-4pm</p><br>
+                <p>Weekends: 8am-12pm</p>
+            </nav>
+
+            <div class="main">
+                <header>
+                    <h1> BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                    <hr>
+                </header>
+                
+                <div class="abt">
+                    <div class="about">
+                        <h2>About the Barangay</h2>
+                        <hr>
+                        <p>Barangay Tacdangan is one of the 68 rural administrative divisions of the municipality of Cabatuan, Iloilo. It exists as a typical village in the historically significant town founded in 1732.</p>
+                    </div>
+                </div>
+
+                <div class="mission">
+                    <h2>MISSION</h2>
+                    <p>  Serve pro-actively by delivering  efficient and effective Social Services such as health, education, local protective services and social welfare and development  services (HELPS) to the constituents;</p>
+                    <ul>
+                        <li>Develop a diversified and robust economy by improving farmers’ capacity to increase yield and income for food security and 100% rice self-sufficiency;</li>
+                        <li>Introduce an adaptive measures against climate change to ensure sustainability on agricultural produce;</li>
+                        <li>Develop and expand agricultural and commercial sub-sectors of local economic development by facilitating the establishment of sustainable industries that cater the processing of Cabatuan’s products;</li>
+                        <li>Promote the diversified growth of commerce, trade, industry and tourism activities to increase employment/income;</li>
+                        <li>Ensure a balance environment by implementing  environmental laws, rules and regulations for the safety of an empowered and resilient citizenry;</li>
+                    </ul>
+                </div>
+
+                <div class="vision">
+                    <h2>VISION</h2>
+                    <p> "The gateway of Western Visayas to the World, a Progressive Municipality with Diversified and Robust Economy whose Resilient and Empowered Citizenry Live in a Balanced Environment Served by Pro-active Local Government.” ("Municipality of Cabtuan")</p>
+                </div>
+
+                <div class="population">
+                    <h2>Population</h2>
+                    <p>Tacdangan is a barangay in the municipality of Cabatuan, in the province of Iloilo. Its population as determined by the 2020 Census was 1,018. This represented 1.67% of the total population of Cabatuan.<p class="link">(https://www.philatlas.com/visayas/r06/iloilo/
+                        cabatuan/tacdangan.html)</p>
+                    
+                </div>
+
+                <div class="loc-offls-container">
+                    <div class="loc">
+                        <h2>Barangay Location</h2>
+                        <p>0.8997, 122.4912 (10° 54' North, 122° 29' East)</p>
+                        <div class="map-container">
+                            <img src="{{ url_for('static', filename='images/map.png') }}" alt="Map Picture" class="brgy-map">
+                        </div>
+                    </div>
+                
+                    <div class="offls">
+                        <h2>Current Barangay Officials</h2>
+                        <div class="brgy-offc">
+                            <table>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>POSITION</th>
+                                </tr>	
+                                <tr>
+                                    <td>Tobias, Victoria T.</td>
+                                    <td>Punong Barangay</td>
+                                </tr>
+                                <tr>
+                                    <td>Pastrana, Lily P.</td>
+                                    <td>Sangguniang Barangay Member</td>
+                                </tr>
+                                <tr>
+                                    <td>Hontanar, Eustaquia A.</td>
+                                    <td>Secretary</td>
+                                </tr>
+                                <tr>
+                                    <td>Pula, Francisca O.</td>
+                                    <td>Barangay Treasurer</td>
+                                </tr>
+                                <tr>
+						            <td>Borreros, Diosdado B.</td>
+						            <td>Sangguniang Barangay Member</td>
+					            </tr>
+                                <tr>
+						            <td>Pastrana, Eva L.</td>
+						            <td>Sangguniang Barangay Member</td>
+					            </tr>
+                                <tr>
+						            <td>Troncoso, Mario M.</td>
+						            <td>Sangguniang Barangay Member</td>
+					            </tr>
+                                <tr>
+						            <td>Guijarno, Nemia M.</td>
+						            <td>Sangguniang Barangay Member</td>
+					            </tr>
+                                <tr>
+						            <td>Pula, Francisca O.</td>
+						            <td>Barangay Treasurer</td>
+					            </tr>
+                            </table>
+                
+                            <table>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>POSITION</th>
+                                </tr>
+                                <tr>
+						            <td>Endencio, Efifanny A.</td>
+						            <td>Sangguniang Barangay Member/SK Chairperson</td>
+					            </tr>
+                                <tr>
+                                    <td>Pasiderio, Gina May M.</td>
+                                    <td>SK Member</td>
+                                </tr>
+                                <tr>
+                                    <td>Silao, Dave G.</td>
+                                    <td>SK Member</td>
+                                </tr>
+                                <tr>
+						            <td>Billena, Josephine T.</td>
+						            <td>SK Member</td> 
+					            </tr>
+                                <tr>
+						            <td>Brandes, Christian Dale D.</td>
+						            <td>SK Member</td>
+					            </tr>
+                                <tr>
+						            <td>Velasco, Erloisa Jhane L.</td>
+						            <td>SK Member</td>
+					            </tr>
+                                <tr>
+						            <td>Hernandez, Ivy Rose L.</td>
+						            <td>SK Secretary</td>
+					            </tr>
+                                <tr>
+                                    <td>Presoris, Michael Jiro C.</td>
+                                    <td>SK Treasurer</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="source">https://bis.dilg.gov.ph/bops/default/master?psgc=06</p>
+                    </div>
+                </div>
+
+
+
+                <footer>
+			        <p>&copy; Copyright 2026 ITE 298</p>
+		        </footer>
+            </div>
+
+        </div>
+    </body>
+</html>

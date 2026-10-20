@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Tacdangan: Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-side">
+            <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Barangay Logo" class="logo">
+            <hr>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('service') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}" class="active">Contacts</a></li>
+            {% if session.get('user_id') %}
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('signin') }}">Register/ Sign In</a></li>
+            {% endif %}   
+            </ul>
+            <h3>Office hours:</h3>
+            <p>Weekdays: 8am-4pm</p>
+            <p>Weekends: 8am-12pm</p>
+        </nav>
+
+        <div class="main">
+            <header>
+                <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                <hr>
+            </header>
+
+            <div class="contact-container">
+                <div class="contact-heading">
+                    <h2>Feel free to get in touch with us</h2>
+                    <p>We're here to help and answer any question you might have</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info-section">
+                        <div class="contact-info-item">
+                            <div class="contact-icon phone-icon">
+                                <span>📞</span>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Have any questions?</h4>
+                                <p class="contact-text">Free +63 (917)-123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon email-icon">
+                                <span>✉️</span>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Write us an email</h4>
+                                <p class="contact-text">barangaytacdangan@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon location-icon">
+                                <span>📍</span>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Visit us at</h4>
+                                <p class="contact-text">Barangay Office, Tacdangan, Iloilo City</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon hours-icon">
+                                <span>🕐</span>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Office Hours</h4>
+                                <p class="contact-text">Mon-Fri: 8:00 AM - 4:00 PM<br>Sat-Sun: 8:00 AM - 12:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Section -->
+                    <div class="contact-form-section">
+                        <h3>Send us a Message</h3>
+                        <form class="contact-form" method="POST" action="{{ url_for('contact') }}">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Your Name <span class="required">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label for="subject">Subject <span class="required">*</span></label>
+                                    <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label for="message">Message <span class="required">*</span></label>
+                                    <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group checkbox-group">
+                                    <label for="consent">
+                                        <input type="checkbox" id="consent" name="consent" required>
+                                        <span>I agree to the privacy policy and terms of service</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Send a Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="additional-info">
+                    <div class="info-card">
+                        <h4>Response Time</h4>
+                        <p>We typically respond to all messages within 1-2 business days during office hours.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Emergency Assistance</h4>
+                        <p>For urgent matters, please call our office directly or visit the barangay office in person.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Social Media</h4>
+                        <p>Follow us on social media for updates and announcements: Facebook: @BarangayTacdangan</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy; Copyright 2026 ITE 298</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

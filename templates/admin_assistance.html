@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assistance Requests | E-Community Admin</title>
+
+    <!-- Shared admin styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <!-- Assistance page styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_assistance.css') }}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="nav-side">
+
+        <div class="logo-area">
+            <div class="admin-logo">E</div>
+            <p>E-Community</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin') }}">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_documents') }}">Documents</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_health') }}">Health</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_assistance') }}" class="active">
+                    Assistance
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_complaints') }}">Complaints</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_messages') }}">Messages</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_residents') }}">Residents</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header>
+            <p class="admin-label">E-COMMUNITY ADMINISTRATION</p>
+
+            <h1>Assistance Requests</h1>
+
+            <div class="welcome-box">
+                <p>Manage Assistance Requests</p>
+
+                <span>
+                    Review and manage financial and educational assistance
+                    applications submitted by residents.
+                </span>
+            </div>
+        </header>
+
+        <!-- ASSISTANCE REQUESTS TABLE -->
+        <section class="requests-container">
+
+            <h2>Assistance Request Records</h2>
+
+            <p>
+                Total assistance requests:
+                <strong>{{ requests | length }}</strong>
+            </p>
+
+            <table class="requests-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Resident</th>
+                        <th>Assistance Type</th>
+                        <th>Date Submitted</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in requests %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+
+                        <td>
+                            <strong>
+                                {{ item.resident_name or 'Not provided' }}
+                            </strong>
+                            <br>
+                            Age:
+                            {{ item.resident_age if item.resident_age is not none else 'N/A' }}
+                            <br>
+                            Gender: {{ item.resident_gender or 'N/A' }}
+                            <br>
+                            Contact: {{ item.resident_contact or 'N/A' }}
+                            <br>
+                            Address: {{ item.resident_address or 'N/A' }}
+                        </td>
+
+                        <td>
+                            {{ item.service_type | replace('-', ' ') | title }}
+                        </td>
+
+                        <td>
+                            {{ item.request_date.strftime('%b %d, %Y %I:%M %p')
+                               if item.request_date else 'N/A' }}
+                        </td>
+
+                        <td>
+                            {% set current_status = item.status or 'Pending' %}
+
+                            <span class="status {{ current_status | lower }}">
+                                {{ current_status }}
+                            </span>
+                        </td>
+
+                        <!-- VIEW DETAILS -->
+                        <td>
+                            <details class="request-details">
+
+                                <summary>View Details</summary>
+
+                                <div class="details-content">
+                                    <p>
+                                        <strong>Request ID:</strong>
+                                        {{ item.id }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Resident Account ID:</strong>
+                                        {{ item.user_id }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Resident Name:</strong>
+                                        {{ item.resident_name or 'Not provided' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Age:</strong>
+                                        {{ item.resident_age if item.resident_age is not none else 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Gender:</strong>
+                                        {{ item.resident_gender or 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Contact:</strong>
+                                        {{ item.resident_contact or 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Address:</strong>
+                                        {{ item.resident_address or 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Assistance Type:</strong>
+                                        {{ item.service_type | replace('-', ' ') | title }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Description:</strong>
+                                        {{ item.description or 'None provided' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Amount Requested:</strong>
+                                        {{ item.amount_requested if item.amount_requested is not none else 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Date Needed:</strong>
+                                        {{ item.date_needed or 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Household Members:</strong>
+                                        {{ item.household_members if item.household_members is not none else 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Income Source:</strong>
+                                        {{ item.income_source or 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Monthly Income:</strong>
+                                        {{ item.monthly_income if item.monthly_income is not none else 'N/A' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Supporting Document:</strong>
+                                        {{ item.supporting_document or 'None provided' }}
+                                    </p>
+
+                                    <p>
+                                        <strong>Status:</strong>
+                                        {{ current_status }}
+                                    </p>
+                                </div>
+
+                            </details>
+                        </td>
+
+                        <!-- APPROVE / REJECT -->
+                        <td class="action-cell">
+
+                            {% if current_status | lower == 'pending' %}
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('update_assistance_status', request_id=item.id, action='approve') }}"
+                                onsubmit="return confirm('Are you sure you want to approve this assistance request?');">
+
+                                <button type="submit"
+                                        class="action-btn approve-btn">
+                                    Approve
+                                </button>
+
+                            </form>
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('update_assistance_status', request_id=item.id, action='reject') }}"
+                                onsubmit="return confirm('Are you sure you want to reject this assistance request?');">
+
+                                <button type="submit"
+                                        class="action-btn reject-btn">
+                                    Reject
+                                </button>
+
+                            </form>
+
+                            {% else %}
+
+                            <span class="processed-label">
+                                Already processed
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="empty-message">
+                            No assistance requests found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <a href="{{ url_for('admin') }}" class="back-link">
+            &larr; Back to Dashboard
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>

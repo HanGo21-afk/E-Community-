@@ -1,0 +1,428 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+    background: #66BB6A;
+    min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.nav-side {
+    width: 200px;
+    height: 100vh;
+    background: #1B5E20;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.logo-area {
+    text-align: center;
+    padding: 25px 10px;
+    color: white;
+}
+
+.admin-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #2E7D32;
+    border: 3px solid #A5D6A7;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo-area p {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.nav-side ul {
+    margin-top: 10px;
+}
+
+.nav-side li {
+    width: 100%;
+}
+
+.nav-side a {
+    display: block;
+    padding: 16px 20px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-left: 4px solid transparent;
+    transition: 0.2s;
+}
+
+.nav-side a:hover,
+.nav-side a.active {
+    background: #2E7D32;
+    border-left: 4px solid #A5D6A7;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding: 30px;
+    min-width: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.admin-label {
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.welcome-box {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 18px;
+    background: #388E3C;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-box p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.welcome-box span {
+    font-size: 0.95rem;
+}
+
+/* =========================
+   DASHBOARD CONTENT
+========================= */
+main h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.dashboard-description {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+.admin-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #A5D6A7;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+    transition: 0.2s;
+}
+
+.admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card-icon {
+    font-size: 2.3rem;
+    margin-bottom: 12px;
+}
+
+.admin-card h3 {
+    color: #1B5E20;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.admin-card p {
+    color: #444;
+    line-height: 1.5;
+    min-height: 70px;
+    margin-bottom: 18px;
+}
+
+.admin-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2E7D32;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-card button:hover {
+    background: #1B5E20;
+}
+
+/* DASHBOARD CARD LINKS */
+.admin-card .admin-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2E7D32;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-card .admin-button:hover,
+.admin-card .admin-button:focus {
+    background: #1B5E20;
+    color: white;
+}
+
+/* =========================
+   DOCUMENT REQUESTS TABLE
+========================= */
+.requests-container {
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border: 2px solid #A5D6A7;
+    border-radius: 12px;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    overflow-x: auto;
+}
+
+.requests-container h2 {
+    color: #1B5E20;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+.requests-table th,
+.requests-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.requests-table th {
+    background: #E8F5E9;
+    color: #1B5E20;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.requests-table td {
+    color: #333;
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+}
+
+.requests-table tbody tr:hover {
+    background: #F1F8E9;
+}
+
+.requests-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* REQUEST STATUS */
+.status {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 15px;
+    background: #FFF3CD;
+    color: #856404;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* EMPTY TABLE MESSAGE */
+.empty-message {
+    text-align: center;
+    padding: 25px !important;
+    color: #666 !important;
+}
+
+/* =========================
+   BACK TO DASHBOARD
+========================= */
+a.back-link,
+a.back-link:link,
+a.back-link:visited {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 18px;
+    background: #2E7D32;
+    color: #FFFFFF !important;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease;
+}
+
+a.back-link:hover,
+a.back-link:focus,
+a.back-link:active {
+    background: #1B5E20;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+    .admin-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main {
+        padding: 25px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+    .wrapper {
+        display: block;
+    }
+
+    .nav-side {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .logo-area {
+        padding: 15px;
+    }
+
+    .admin-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .nav-side ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-side li {
+        width: auto;
+    }
+
+    .nav-side a {
+        padding: 12px 15px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+
+    .nav-side a:hover,
+    .nav-side a.active {
+        border-left: none;
+        border-bottom: 3px solid #A5D6A7;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .admin-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .requests-container {
+        padding: 15px;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 520px) {
+    .main {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    main h2 {
+        font-size: 1.5rem;
+    }
+
+    .admin-card {
+        padding: 20px;
+    }
+
+    .welcome-box {
+        padding: 15px;
+    }
+}

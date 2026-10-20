@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Barangay Tacdangan: SIgn In</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
+	    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">  
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <header>
+                    <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Logo" class="logo-img">
+                    <h1> BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                </header>
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('service') }}">Services</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="wrapper">
+            <div class="login-page">
+                <div class="welcome-panel">
+                    <div class="welcome-content">
+                        <h2>Hello, Welcome!</h2>
+                        <p>New Resident or Not Registered? Register Now!</p>
+                        <a href="{{ url_for('register') }}" class="register-btn">Register</a>
+                    </div>
+                </div>
+    
+                <div class="signin-section">
+                    <div class="signin-container">
+                        <h1>Sign In</h1>
+                        
+                        <form class="signin-form" method="POST" action="{{ url_for('signin') }}">
+                            <div class="form-group">
+                                <input type="text" id="contact-info" name="contact_info"placeholder="Email address/Contact number" required>
+                            </div>
+    
+                            <div class="form-group">
+                                <input type="password" id="myInput" name="password" placeholder="Password" required>
+                            </div>
+ 
+                            <div class="password-options">
+                                <div class="show-pass">
+                                    <input type="checkbox" onclick="myFunction()">
+                                    <span>Show Password</span>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+ 
+                            <script>
+                                function myFunction() {
+                                    var x = document.getElementById("myInput");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                }
+                            </script>
+    
+                            <button type="submit" class="login-btn">Sign In</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Messages | E-Community Admin</title>
+
+    <!-- Shared admin design -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <!-- Contact messages page design -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_messages.css') }}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="nav-side">
+
+        <div class="logo-area">
+            <div class="admin-logo">E</div>
+            <p>E-Community</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin') }}">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_documents') }}">Documents</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_health') }}">Health</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_assistance') }}">Assistance</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_complaints') }}">Complaints</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_messages') }}" class="active">
+                    Messages
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_residents') }}">Residents</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header>
+            <p class="admin-label">BARANGAY TACDANGAN</p>
+
+            <h1>Contact Messages</h1>
+
+            <div class="welcome-box">
+                <p>Manage Contact Messages</p>
+
+                <span>
+                    View and manage messages submitted by residents
+                    through the E-Community contact form.
+                </span>
+            </div>
+        </header>
+
+        <!-- CONTACT MESSAGES TABLE -->
+        <section class="requests-container messages-container">
+
+            <h2>Submitted Messages</h2>
+
+            <table class="requests-table messages-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sender</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                        <th>Date Received</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in messages %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+
+                        <td>{{ item.name }}</td>
+
+                        <td>
+                            <a class="email-link"
+                               href="mailto:{{ item.email }}">
+                                {{ item.email }}
+                            </a>
+                        </td>
+
+                        <td class="subject-content">
+                            {{ item.subject or "No subject provided" }}
+                        </td>
+
+                        <td>
+                            <div class="message-content">{{ item.message }}</div>
+                        </td>
+
+                        <td>
+                            {% set current_status = item.status or 'Pending' %}
+                            <span class="message-status">
+                                {{ current_status }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {{ item.message_date or "Date unavailable" }}
+                        </td>
+
+                        <td>
+                            <div class="message-actions">
+
+                                {% if current_status == 'Pending' %}
+                                <form
+                                    method="POST"
+                                    action="{{ url_for(
+                                        'update_contact_message_status',
+                                        message_id=item.id,
+                                        action='read'
+                                    ) }}">
+
+                                    <button type="submit"
+                                            class="message-action-button read-button">
+                                        Mark as Read
+                                    </button>
+                                </form>
+                                {% endif %}
+
+                                {% if current_status != 'Resolved' %}
+                                <form
+                                    method="POST"
+                                    action="{{ url_for(
+                                        'update_contact_message_status',
+                                        message_id=item.id,
+                                        action='resolve'
+                                    ) }}">
+
+                                    <button type="submit"
+                                            class="message-action-button resolve-button">
+                                        Mark as Resolved
+                                    </button>
+                                </form>
+                                {% else %}
+                                <span class="resolved-label">
+                                    Completed
+                                </span>
+                                {% endif %}
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="empty-message">
+                            No contact messages have been received yet.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <a href="{{ url_for('admin') }}" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registered Residents | E-Community Admin</title>
+
+    <!-- Shared admin styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <!-- Residents page styling -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_residents.css') }}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="nav-side">
+
+        <div class="logo-area">
+            <div class="admin-logo">E</div>
+            <p>E-Community</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin') }}">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_documents') }}">Documents</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_health') }}">Health</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_assistance') }}">Assistance</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_complaints') }}">Complaints</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_messages') }}">Messages</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_residents') }}" class="active">
+                    Residents
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header>
+            <p class="admin-label">E-COMMUNITY ADMINISTRATION</p>
+
+            <h1>Registered Residents</h1>
+
+            <div class="welcome-box">
+                <p>Manage Resident Accounts</p>
+
+                <span>
+                    View registered residents and their account information
+                    in the E-Community system.
+                </span>
+            </div>
+        </header>
+
+        <!-- RESIDENTS TABLE -->
+        <section class="requests-container">
+
+            <h2>Resident Records</h2>
+
+            <table class="requests-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Resident Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for resident in residents %}
+                    <tr>
+                        <td>{{ resident.id }}</td>
+
+                        <td class="resident-name">
+                            {{ resident.first_name or '' }}
+
+                            {% if resident.middle_name %}
+                                {{ resident.middle_name }}
+                            {% endif %}
+
+                            {{ resident.last_name or '' }}
+
+                            {% if resident.suffix %}
+                                {{ resident.suffix }}
+                            {% endif %}
+                        </td>
+
+                        <td class="resident-email">
+                            {% if resident.email %}
+                                <a href="mailto:{{ resident.email }}">
+                                    {{ resident.email }}
+                                </a>
+                            {% else %}
+                                Not provided
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {{ resident.contact_info or 'Not provided' }}
+                        </td>
+
+                        <td class="resident-address">
+                            {{ resident.address or 'Not provided' }}
+                        </td>
+
+                        <td>
+                            <span class="resident-role">
+                                {{ resident.role or 'Resident' }}
+                            </span>
+                        </td>
+                    </tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="empty-message">
+                            No registered residents found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <a href="{{ url_for('admin') }}" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>

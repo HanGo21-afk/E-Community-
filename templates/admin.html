@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - E-Community</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <nav class="nav-side">
+
+        <div class="logo-area">
+            <div class="admin-logo">A</div>
+            <p>ADMIN</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin') }}" class="active">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_documents') }}">
+                    Documents
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_health') }}">
+                    Health
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_assistance') }}">
+                    Assistance
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url_for('admin_complaints') }}">
+                    Complaints
+                </a>
+            </li>
+
+            <!-- MESSAGES -->
+            <li>
+                <a href="{{ url_for('admin_messages') }}">
+                    Messages
+                </a>
+            </li>
+
+            <!-- RESIDENTS -->
+            <li>
+                <a href="{{ url_for('admin_residents') }}">
+                    Residents
+                </a>
+            </li>
+
+            <!-- LOG OUT -->
+            <li>
+                <a href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <header>
+            <p class="admin-label">BARANGAY TACDANGAN</p>
+
+            <h1>Admin Dashboard</h1>
+
+            <div class="welcome-box">
+                <p>Welcome, Barangay Official.</p>
+                <span>Manage and monitor the E-Community system.</span>
+            </div>
+        </header>
+
+        <main>
+
+            <h2>Community Management</h2>
+
+            <p class="dashboard-description">
+                Manage and monitor requests, complaints, and messages
+                submitted through the E-Community website.
+            </p>
+
+            <section class="admin-cards">
+
+                <!-- DOCUMENTS -->
+                <div class="admin-card">
+
+                    <div class="card-icon">📄</div>
+
+                    <h3>Document Requests</h3>
+
+                    <p>
+                        View and manage requests for barangay documents.
+                    </p>
+
+                    <a href="{{ url_for('admin_documents') }}"
+                       class="admin-button">
+                        View Requests
+                    </a>
+
+                </div>
+
+                <!-- HEALTH -->
+                <div class="admin-card">
+
+                    <div class="card-icon">🏥</div>
+
+                    <h3>Health Requests</h3>
+
+                    <p>
+                        Review submitted health service requests.
+                    </p>
+
+                    <a href="{{ url_for('admin_health') }}"
+                       class="admin-button">
+                        View Requests
+                    </a>
+
+                </div>
+
+                <!-- ASSISTANCE -->
+                <div class="admin-card">
+
+                    <div class="card-icon">🤝</div>
+
+                    <h3>Assistance Requests</h3>
+
+                    <p>
+                        Review financial, medical, educational,
+                        food, and other assistance requests.
+                    </p>
+
+                    <a href="{{ url_for('admin_assistance') }}"
+                       class="admin-button">
+                        View Requests
+                    </a>
+
+                </div>
+
+                <!-- COMPLAINTS -->
+                <div class="admin-card">
+
+                    <div class="card-icon">⚠️</div>
+
+                    <h3>Complaints</h3>
+
+                    <p>
+                        Review complaints submitted by residents.
+                    </p>
+
+                    <a href="{{ url_for('admin_complaints') }}"
+                       class="admin-button">
+                        View Complaints
+                    </a>
+
+                </div>
+
+                <!-- MESSAGES -->
+                <div class="admin-card">
+
+                    <div class="card-icon">💬</div>
+
+                    <h3>Contact Messages</h3>
+
+                    <p>
+                        View messages submitted through the contact page.
+                    </p>
+
+                    <a href="{{ url_for('admin_messages') }}"
+                       class="admin-button">
+                        View Messages
+                    </a>
+
+                </div>
+
+                <!-- RESIDENTS -->
+                <div class="admin-card">
+
+                    <div class="card-icon">👥</div>
+
+                    <h3>Residents</h3>
+
+                    <p>
+                        View registered residents and their account information.
+                    </p>
+
+                    <a href="{{ url_for('admin_residents') }}"
+                       class="admin-button">
+                        View Residents
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>

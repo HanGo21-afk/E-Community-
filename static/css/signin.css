@@ -1,0 +1,350 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Josefin Sans", sans-serif;
+}
+ 
+body{
+    background: #66BB6A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.navbar{
+    background: #1B5E20;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+ 
+.navbar-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.navbar-logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+ 
+.logo-img{
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+ 
+.nav-menu{
+    display: flex;
+    list-style: none;
+    gap: 0;
+}
+ 
+.nav-menu li{
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+ 
+.nav-menu li:last-child{
+    border-right: none;
+}
+ 
+.nav-menu li a{
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+ 
+.nav-menu li a:hover{
+    background: #2E7D32;
+    color: #A5D6A7;
+}
+
+header{
+    display: flex;
+    flex-direction: row ;
+}
+
+header h1{
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: white;
+    margin-left: 10px;
+}
+ 
+.wrapper{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.login-page{
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+ 
+.welcome-panel{
+    background: #1B5E20;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40%;
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+}
+ 
+.welcome-content{
+    text-align: center;
+    color: white;
+}
+ 
+.welcome-content h2{
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+ 
+.welcome-content p{
+    font-size: 1rem;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+ 
+.register-btn{
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+ 
+.register-btn:hover{
+    background: white;
+    color: #1B5E20;
+}
+ 
+.signin-section{
+    padding: 60px 50px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.signin-container{
+    width: 100%;
+    max-width: 350px;
+}
+ 
+.signin-container h1{
+    font-size: 2rem;
+    color: #2E7D32;
+    margin-bottom: 30px;
+    text-align: center;
+}
+ 
+.signin-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ 
+.form-group{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+ 
+.form-group input{
+    width: 100%;
+    padding: 14px 45px 14px 15px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: "Josefin Sans", sans-serif;
+    transition: all 0.3s ease;
+}
+ 
+.form-group input:focus{
+    outline: none;
+    background: #e8e8e8;
+    box-shadow: 0 0 0 3px rgba(91, 159, 214, 0.1);
+}
+ 
+.form-group input::placeholder{
+    color: #999;
+}
+ 
+.password-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: -10px;
+}
+ 
+.show-pass{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #333;
+}
+ 
+.show-pass input[type="checkbox"]{
+    width: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+ 
+.show-pass input[type="checkbox"]:focus{
+    box-shadow: none;
+    background: none;
+}
+ 
+.forgot-password{
+    color: #1B5E20;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+ 
+.forgot-password:hover{
+    color: #2E7D32;
+    text-decoration: underline;
+}
+ 
+.login-btn{
+    padding: 14px;
+    background: #1B5E20;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 10px;
+    text-align: center;
+}
+ 
+ 
+.login-btn:hover{
+    background: #2E7D32;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(91, 159, 214, 0.3);
+}
+ 
+@media (max-width: 768px){
+    .navbar-container{
+        flex-direction: column;
+        gap: 15px;
+    }
+ 
+    .nav-menu{
+        flex-direction: column;
+        width: 100%;
+    }
+ 
+    .nav-menu li{
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+ 
+    .nav-menu li:last-child{
+        border-bottom: none;
+    }
+ 
+    .nav-menu li a{
+        text-align: center;
+    }
+    .login-page{
+        flex-direction: column;
+    }
+ 
+    .welcome-panel{
+        min-width: 100%;
+        padding: 40px 30px;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+ 
+    .login-section{
+        padding: 40px 30px;
+    }
+ 
+    .welcome-content h2{
+        font-size: 1.8rem;
+    }
+ 
+    .login-container h1{
+        font-size: 1.6rem;
+    }
+ 
+    .password-options{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+ 
+@media (max-width: 520px){
+    .login-page{
+        border-radius: 15px;
+    }
+ 
+    .welcome-panel{
+        padding: 30px 20px;
+    }
+ 
+    .login-section{
+        padding: 30px 20px;
+    }
+ 
+    .welcome-content h2{
+        font-size: 1.5rem;
+    }
+ 
+    .welcome-content p{
+        font-size: 0.9rem;
+    }
+ 
+    .login-container{
+        max-width: 100%;
+    }
+ 
+    .login-container h1{
+        font-size: 1.4rem;
+    }
+ 
+    .form-group input{
+        padding: 12px 40px 12px 12px;
+    }
+ 
+    .password-options{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

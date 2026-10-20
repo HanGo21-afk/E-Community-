@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Tacdangan: Document Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/req-doc.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-side">
+            <img src="{{ url_for('static', filename='images/jb.png') }}" alt="Barangay Logo" class="logo">
+            <hr>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('service') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign Out</a></li>
+            </ul>
+            <h3>Office hours:</h3>
+            <p>Weekdays: 8am-4pm</p><br>
+            <p>Weekends: 8am-12pm</p>
+        </nav>
+
+        <div class="main">
+            <header>
+                <h1>BARANGAY TACDANGAN E-COMMUNITY SYSTEM</h1>
+                <hr>
+            </header>
+
+            <div class="form-container">
+                <h2 class="form-title">Document Request Form</h2>
+                <form method="POST" action="{{ url_for('req_doc') }}">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="documentType">Select Document Type <span class="required">*</span></label>
+                            <select id="documentType" name="documentType" required>
+                                <option value="">-- Choose a document --</option>
+                                <option value="barangay-clearance">Barangay Clearance</option>
+                                <option value="certificate-residency">Certificate of Residency</option>
+                                <option value="certificate-indigency">Certificate of Indigency</option>
+                                <option value="business-permit">Business Permit Endorsement</option>
+                                <option value="cedula">Cedula (Community Tax Certificate)</option>
+                                <option value="jobseeker">First-Time Jobseeker Certification</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="full-name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Contact Number <span class="required">*</span></label>
+                            <input type="text" id="phone" name="phone" placeholder="Enter your contact number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resident-address">Address <span class="required">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="House No., Street, Purok/Zone" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="valid-id">Upload Valid ID (JPG/PNG) <span class="required">*</span></label>
+                            <input type="file" id="valid-id" name="valid-id" accept=".jpg,.jpeg,.png" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose">Purpose of Request <span class="required">*</span></label>
+                            <select id="purpose" name="purpose" required>
+                                <option value="">-- Select purpose --</option>
+                                <option value="job-application">Job Application</option>
+                                <option value="school-requirement">School Requirement</option>
+                                <option value="financial-assistance">Financial Assistance</option>
+                                <option value="business">Business</option>
+                                <option value="other">Other (please specify below)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="otherPurpose">If Other, please specify</label>
+                            <textarea id="otherPurpose" name="otherPurpose" placeholder="Enter your reason"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="requirement-id">Upload Requirements (JPG/PNG)</label>
+                            <input type="file" id="requirement-id" name="requirement-id" accept=".jpg,.jpeg,.png" multiple>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                    <a href="{{ url_for('service') }}" class="btn">Back to Services</a>
+                </form>
+            </div>
+
+            <div class="doc-info-section">
+                <h2 class="section-title">Document Information</h2>
+                <div class="doc-cards-grid">
+                    <div class="doc-card">
+                        <h3>Barangay Clearance</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">₱20.00</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">1-3 Days</span>
+                            </div>
+                        </div>
+                        <h4>Requirements</h4>
+                        <ul>
+                            <li>Valid Government ID (Original and photocopy)</li>
+                            <li>Cedula (Community Tax Certificate) - Current year</li>
+                            <li>1x1 or 2x2 Photo - Recent, white background</li>
+                            <li>Proof of Residency (if new resident in the barangay)</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h3>Certificate of Residency</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">₱20.00</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">1-3 Days</span>
+                            </div>
+                        </div>
+                        <h4>Requirements</h4>
+                        <ul>
+                            <li>Valid Government ID (with current address or original and photocopy)</li>
+                            <li>Proof of Residence (Utility bill, lease contract, or land title)</li>
+                            <li>Cedula (Optional but may be required)</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h3>Certificate of Indigency</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">Free</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">Same Day</span>
+                            </div>
+                        </div>
+                        <h4>Requirements</h4>
+                        <ul>
+                            <li>Valid Government ID (Original and photocopy)</li>
+                            <li>Proof of Residency (Must be resident of the barangay)</li>
+                            <li>Supporting Documents (Medical abstract, school enrollment form, etc.)</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h3>Business Permit Endorsement</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">₱100-200</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">1-3 Days</span>
+                            </div>
+                        </div>
+                        <h4>Requirements</h4>
+                        <ul>
+                            <li>DTI Business Name Registration (for sole proprietorship)</li>
+                            <li>SEC Registration (for corporations/partnerships)</li>
+                            <li>Valid Government ID (Owner or authorized representative)</li>
+                            <li>Lease Contract or Land Title (Proof of business location)</li>
+                            <li>Sketch or Location Map (Some barangays require)</li>
+                            <li>Cedula (Community Tax Certificate)</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h3>Cedula (Community Tax Certificate)</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">₱5.00</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">Same Day</span>
+                            </div>
+                        </div>
+                        <h4>Who Can Avail</h4>
+                        <ul>
+                            <li>Individuals who have reached 18 years of age</li>
+                            <li>Individuals earning income (employed or self-employed)</li>
+                            <li>Corporation or juridical entities</li>
+                            <li>Real property owners</li>
+                            <li>Anyone engaging in business</li>
+                        </ul>
+                    </div>
+
+                    <div class="doc-card">
+                        <h3>First-Time Jobseeker Certification</h3>
+                        <div class="doc-card-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Fee</span>
+                                <span class="meta-value">Free</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Processing Time</span>
+                                <span class="meta-value">Same Day</span>
+                            </div>
+                        </div>
+                        <h4>Who Can Avail</h4>
+                        <ul>
+                            <li>Filipino citizen actively seeking employment</li>
+                            <li>Have not been employed before (no payslip history)</li>
+                            <li>Resident of the barangay for at least 6 months</li>
+                            <li>Graduate of any educational level (K-12, college, TESDA)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-section">
+                <h2>Step-by-Step Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Visit the Barangay Hall</h4>
+                            <p>Visit during office hours. Prepare and bring all required documents for your specific document type.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Submit Your Documents</h4>
+                            <p>Present all requirements to the barangay staff. If documents were already uploaded through this form, inform the staff. They will verify the submitted documents for completeness.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Pay the Required Fee</h4>
+                            <p>Complete the payment according to the fee schedule. Some documents are free (Certificate of Indigency, Cedula, First-Time Jobseeker Certification).</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Wait for Processing</h4>
+                            <p>Your document will be processed according to the processing time listed. Same-day documents are usually available within hours. Others may take 1-3 business days.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Collect Your Document</h4>
+                            <p>Once processing is complete, collect your document from the barangay hall. You may be notified via email or phone if registration was provided.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy; Copyright 2026 ITE 298</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
